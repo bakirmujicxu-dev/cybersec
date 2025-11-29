@@ -888,33 +888,62 @@ INSERT INTO cyber_daily_challenges (title, description, challenge_type, category
 ('Social Engineering Quiz', 'Answer 7 social engineering questions', 'quiz', 4, 'medium', 35, CURDATE() + INTERVAL 1 DAY),
 ('Network Security Simulation', 'Complete a network security interactive element', 'interactive', 5, 'hard', 45, CURDATE() + INTERVAL 1 DAY);
 
--- Insert sample interactive elements
+-- Insert interactive elements with correct structure
 INSERT INTO cyber_interactive_elements (category_id, element_type, title, description, content, difficulty, xp_reward, time_limit) VALUES
+-- Category 1: Phishing
 (1, 'drag_drop', 'Identify Phishing Emails', 'Drag the suspicious elements from phishing emails', '{"elements": [{"id": "suspicious_link", "name": "Suspicious Link"}, {"id": "grammar_error", "name": "Grammar Error"}, {"id": "urgent_action", "name": "Urgent Action"}, {"id": "spoofed_brand", "name": "Spoofed Brand"}], "scenarios": [{"id": 1, "image": "phishing1.jpg", "correct_elements": ["suspicious_link", "urgent_action"]}, {"id": 2, "image": "phishing2.jpg", "correct_elements": ["grammar_error", "spoofed_brand"]}]}', 'medium', 30, 300),
+
+-- Category 2: Passwords
 (2, 'simulation', 'Password Strength Simulator', 'Create and test different password combinations to see their strength', '{"min_length": 8, "complexity_requirements": ["uppercase", "lowercase", "number", "special"], "levels": [{"min_score": 20, "feedback": "Very weak"}, {"min_score": 40, "feedback": "Weak"}, {"min_score": 60, "feedback": "Medium"}, {"min_score": 80, "feedback": "Strong"}, {"min_score": 100, "feedback": "Very strong"}]}', 'easy', 25, 180),
+
+-- Category 3: Malware
 (3, 'memory_game', 'Malware Types Memory', 'Match malware types with their descriptions in this memory game', '{"cards": [{"id": 1, "type": "malware", "name": "Ransomware", "description": "Encrypts files and demands payment"}, {"id": 2, "type": "malware", "name": "Trojan", "description": "Disguises itself as legitimate software"}, {"id": 3, "type": "malware", "name": "Spyware", "description": "Secretly monitors user activity"}, {"id": 4, "type": "malware", "name": "Worm", "description": "Self-replicating malware that spreads across networks"}], "pairs": 4, "flip_time": 1000}', 'easy', 20, 120),
 
+-- Category 4: Social Engineering
+(4, 'code_challenge', 'Social Engineering Detection', 'Analyze code snippet to identify social engineering tactics', '{"challenge": "Examine this JavaScript code that simulates a fake login form. Identify 3 security issues.", "solution": ["Missing form validation", "No HTTPS enforcement", "Direct credential submission without encryption"], "hints": ["Look for validation methods", "Check if form uses secure protocol", "Examine how data is submitted"]}', 'hard', 40, 600),
+
+-- Category 5: Network Security
+(5, 'drag_drop', 'Network Security Elements', 'Build a secure network by placing security elements in correct positions', '{"elements": [{"id": "firewall", "name": "Firewall"}, {"id": "ids", "name": "IDS/IPS"}, {"id": "router", "name": "Router"}, {"id": "server", "name": "Server"}], "correct_placement": {"firewall": "perimeter", "ids": "internal", "router": "boundary", "server": "protected"}}', 'medium', 35, 240),
+
+-- Category 6: Kriptografija i Enkripcija
 (6, 'drag_drop', 'Phishing Detection', 'Identify phishing elements in suspicious emails', '{"elements": [{"id": "suspicious_link", "name": "Sumnjiv link"}, {"id": "grammar_error", "name": "Gramatička greška"}, {"id": "urgent_action", "name": "Hitna akcija"}, {"id": "spoofed_brand", "name": "Lažni brend"}], "scenarios": [{"id": 1, "image": "phishing1.jpg", "correct_elements": ["suspicious_link", "urgent_action"]}, {"id": 2, "image": "phishing2.jpg", "correct_elements": ["grammar_error", "spoofed_brand"]}]}', 'medium', 30, 180),
 
+-- Category 7: VPN i Privatnost
 (7, 'drag_drop', 'Digitalni Otisak', 'Pronađite slabosti u digitalnom otisku', '{"elements": [{"id": "ridge", "name": "Grbice uzorci"}, {"id": "whorl", "name": "Uzorci vrtloga"}, {"id": "loop", "name": "Kružni uzorci"}, {"id": "arch", "name": "Lukovi"}, {"id": "endpoint", "name": "Krajnje tačke"}], "scenarios": [{"id": 1, "image": "fingerprint1.jpg", "correct_elements": ["ridge", "whorl", "arch", "loop"]}, {"id": 2, "image": "fingerprint2.jpg", "correct_elements": ["ridge", "whorl", "arch"]}]}', 'medium', 35, 240),
 
+-- Category 8: Digitalna Sigurnost
 (8, 'drag_drop', 'VPN Konfiguracija', 'Postavite sigurnu VPN konfiguraciju', '{"elements": [{"id": "protocol", "name": "Protokol"}, {"id": "encryption", "name": "Enkripcija"}, {"id": "kill_switch", "name": "Kill Switch"}], "scenarios": [{"id": 1, "image": "vpn-config.jpg", "correct_elements": ["protocol", "encryption", "kill_switch"]}, {"id": 2, "image": "vpn-mobile.jpg", "correct_elements": ["protocol", "encryption"]}]}', 'hard', 40, 300),
 
+-- Category 9: E-mail Sigurnost
 (9, 'simulation', 'Kriptografska Simulacija', 'Simulirajte kriptografske algoritme', '{"algorithms": ["AES", "RSA", "DES", "Caesar"], "plaintext": "Ovo je tajna poruka za enkripciju", "key_length": 256}', 'hard', 45, 400),
 
+-- Category 10: Blockchain i Kripto
 (10, 'simulation', 'VPN Testiranje', 'Testirajte VPN sigurnost', '{"scenarios": [{"id": 1, "name": "IP Utajavanje", "description": "Test da li VPN skriva vašu IP adresu"}, {"id": 2, "name": "DNS Protekcija", "description": "Proverite da li VPN štiti od DNS propuštanja"}], "requirements": ["dns_leak", "kill_switch"], "results_display": "graphical"}', 'medium', 35, 300),
 
+-- Category 11: Aplikacijska Sigurnost (DevSecOps)
 (11, 'code_challenge', 'Firewall Pravila', 'Analizirajte firewall konfiguraciju', '{"challenge": "Analizirajte ovaj iptables konfiguracioni fajl i pronađite sigurnosne propuste.", "solution": ["Nedostaje INPUT pravilo za SSH", "Nedostaje pravilo za odgovarajuće pakete", "Nedostaje logging"]}', 'medium', 25, 300),
-(4, 'code_challenge', 'Social Engineering Detection', 'Analyze code snippet to identify social engineering tactics', '{"challenge": "Examine this JavaScript code that simulates a fake login form. Identify 3 security issues.", "solution": ["Missing form validation", "No HTTPS enforcement", "Direct credential submission without encryption"], "hints": ["Look for validation methods", "Check if form uses secure protocol", "Examine how data is submitted"]}', 'hard', 40, 600),
-(5, 'drag_drop', 'Network Security Elements', 'Build a secure network by placing security elements in correct positions', '{"elements": [{"id": "firewall", "name": "Firewall"}, {"id": "ids", "name": "IDS/IPS"}, {"id": "router", "name": "Router"}, {"id": "server", "name": "Server"}], "correct_placement": {"firewall": "perimeter", "ids": "internal", "router": "boundary", "server": "protected"}}', 'medium', 35, 240),
-(6, 'drag_drop', 'VPN Konfiguracija', 'Postavite sigurnu VPN konfiguraciju za različite scenarije', '{"elements": [{"id": "protocol", "name": "Protokol"}, {"id": "encryption", "name": "Enkripcija"}, {"id": "kill_switch", "name": "Kill Switch"}], "scenarios": [{"id": 1, "name": "Remote Work", "required_protocols": ["OpenVPN", "WireGuard"], "firewall_rules": true}, {"id": 2, "name": "Public WiFi", "required_protocols": ["OpenVPN"], "kill_switch": true}]}', 'hard', 40, 300),
-(7, 'simulation', 'VPN Testiranje', 'Testirajte VPN sigurnost', '{"scenarios": [{"id": 1, "name": "IP Utajavanje", "description": "Test da li VPN skriva vašu IP adresu"}, {"id": 2, "name": "DNS Zaštita", "description": "Proverite da li VPN štiti od DNS propuštanja"}], "requirements": ["dns_leak", "kill_switch"], "results_display": "graphical"}', 'medium', 35, 300),
-(8, 'simulation', 'VPN Trafik Analiza', 'Analizirajte VPN promet', '{"packets": [{"id": 1, "name": "HTTP", "description": "Nekriptovan web saobraćaj"}, {"id": 2, "name": "DNS", "description": "DNS upiti"}, {"id": 3, "name": "UDP", "description": "Video stream"}]}', 'medium', 30, 180),
-(9, 'code_challenge', 'Firewall Pravila', 'Analizirajte firewall konfiguraciju', '{"challenge": "Analizirajte ovaj iptables konfiguracioni fajl i pronađite sigurnosne propuste.", "solution": ["Neophodno INPUT pravilo za SSH", "Neophodno pravilo za dozvoljene pakete", "Omogućiti logovanje"]}', 'medium', 25, 300),
-(10, 'simulation', 'Mrežni Skener', 'Skenirajte mrežu za ranjivosti', '{"tools": ["nmap", "masscan", "nikto"], "targets": ["192.168.1.0/24", "example.com"], "vulnerabilities": ["SQLi", "XSS", "CVE-2023-1234"]}', 'hard', 45, 400),
-(11, 'drag_drop', 'Digitalni Otisak', 'Pronađite karakteristike digitalnog otiska', '{"elements": [{"id": "ridge", "name": "Grbice uzorci"}, {"id": "whorl", "name": "Uzorci vrtloga"}, {"id": "loop", "name": "Kružni uzorci"}, {"id": "arch", "name": "Lukovi"}, {"id": "endpoint", "name": "Krajevne tačke"}], "scenarios": [{"id": 1, "image": "fingerprint1.jpg", "correct_elements": ["ridge", "whorl", "arch", "loop"], "description": "Visoki kvalitet otiska"}], "scenarios": [{"id": 2, "image": "fingerprint2.jpg", "correct_elements": ["ridge", "whorl", "arch", "loop"], "description": "Srednji kvalitet otiska"}]}', 'medium', 35, 240),
-(12, 'code_challenge', 'Digitalni Otisak', 'Analizirajte digitalni otisak', '{"challenge": "Pronađite karakteristike digitalnog otiska u sledećem kodu i identifikujte sigurnosne propuste.", "code": "biometricData = new BiometricAPI();\\nconst result = biometricData.verifyFingerprint(userId, fingerprint);\\nif (!result.success) {\\n  return error;\\n}\\nreturn success;", "solution": ["Nedostaje enkripcija", "Nedostaje validacija unosa", "Pohranjivanje bez autorizacije"]}', 'hard', 40, 600);
-(13, 'drag_drop', 'VPN Konfiguracija', 'Postavite sigurnu VPN konfiguraciju', '{"elements": [{"id": "protocol", "name": "Protokol"}, {"id": "encryption", "name": "Enkripcija"}, {"id": "kill_switch", "name": "Kill Switch"}], "scenarios": [{"id": 1, "name": "Remote Work", "required_protocols": ["OpenVPN", "WireGuard"], "firewall_rules": true}, {"id": 2, "name": "Public WiFi", "required_protocols": ["OpenVPN"], "kill_switch": true}]}', 'hard', 40, 300),
+
+-- Category 12: Fizička Sigurnost
+(12, 'drag_drop', 'VPN Konfiguracija za Remote Work', 'Postavite sigurnu VPN konfiguraciju za različite scenarije', '{"elements": [{"id": "protocol", "name": "Protokol"}, {"id": "encryption", "name": "Enkripcija"}, {"id": "kill_switch", "name": "Kill Switch"}], "scenarios": [{"id": 1, "name": "Remote Work", "required_protocols": ["OpenVPN", "WireGuard"], "firewall_rules": true}, {"id": 2, "name": "Public WiFi", "required_protocols": ["OpenVPN"], "kill_switch": true}]}', 'hard', 40, 300),
+
+-- Category 13: Operacijske Sigurnosti
+(13, 'simulation', 'VPN Testiranje', 'Testirajte VPN sigurnost', '{"scenarios": [{"id": 1, "name": "IP Utajavanje", "description": "Test da li VPN skriva vašu IP adresu"}, {"id": 2, "name": "DNS Zaštita", "description": "Proverite da li VPN štiti od DNS propuštanja"}], "requirements": ["dns_leak", "kill_switch"], "results_display": "graphical"}', 'medium', 35, 300),
+
+-- Category 14: Preventivne Mjere
+(14, 'simulation', 'VPN Trafik Analiza', 'Analizirajte VPN promet', '{"packets": [{"id": 1, "name": "HTTP", "description": "Nekriptovan web saobraćaj"}, {"id": 2, "name": "DNS", "description": "DNS upiti"}, {"id": 3, "name": "UDP", "description": "Video stream"}]}', 'medium', 30, 180),
+
+-- Category 15: Forenzika
+(15, 'code_challenge', 'Firewall Pravila', 'Analizirajte firewall konfiguraciju', '{"challenge": "Analizirajte ovaj iptables konfiguracioni fajl i pronađite sigurnosne propuste.", "solution": ["Neophodno INPUT pravilo za SSH", "Neophodno pravilo za dozvoljene pakete", "Omogućiti logovanje"]}', 'medium', 25, 300),
+
+-- Additional elements
+(5, 'simulation', 'Mrežni Skener', 'Skenirajte mrežu za ranjivosti', '{"tools": ["nmap", "masscan", "nikto"], "targets": ["192.168.1.0/24", "example.com"], "vulnerabilities": ["SQLi", "XSS", "CVE-2023-1234"]}', 'hard', 45, 400),
+
+(7, 'drag_drop', 'Digitalni Otisak', 'Pronađite karakteristike digitalnog otiska', '{"elements": [{"id": "ridge", "name": "Grbice uzorci"}, {"id": "whorl", "name": "Uzorci vrtloga"}, {"id": "loop", "name": "Kružni uzorci"}, {"id": "arch", "name": "Lukovi"}, {"id": "endpoint", "name": "Krajevne tačke"}], "scenarios": [{"id": 1, "image": "fingerprint1.jpg", "correct_elements": ["ridge", "whorl", "arch", "loop"], "description": "Visoki kvalitet otiska"}, {"id": 2, "image": "fingerprint2.jpg", "correct_elements": ["ridge", "whorl", "arch", "loop"], "description": "Srednji kvalitet otiska"}]}', 'medium', 35, 240),
+
+(11, 'code_challenge', 'Digitalni Otisak', 'Analizirajte digitalni otisak', '{"challenge": "Pronađite karakteristike digitalnog otiska u sledećem kodu i identifikujte sigurnosne propuste.", "code": "biometricData = new BiometricAPI();\\nconst result = biometricData.verifyFingerprint(userId, fingerprint);\\nif (!result.success) {\\n  return error;\\n}\\nreturn success;", "solution": ["Nedostaje enkripcija", "Nedostaje validacija unosa", "Pohranjivanje bez autorizacije"]}', 'hard', 40, 600),
+
+(12, 'drag_drop', 'VPN Konfiguracija', 'Postavite sigurnu VPN konfiguraciju', '{"elements": [{"id": "protocol", "name": "Protokol"}, {"id": "encryption", "name": "Enkripcija"}, {"id": "kill_switch", "name": "Kill Switch"}], "scenarios": [{"id": 1, "name": "Remote Work", "required_protocols": ["OpenVPN", "WireGuard"], "firewall_rules": true}, {"id": 2, "name": "Public WiFi", "required_protocols": ["OpenVPN"], "kill_switch": true}]}', 'hard', 40, 300),
+
 (14, 'drag_drop', 'Mrežni Paketi', 'Analizirajte mrežne pakete', '{"elements": [{"id": "tcp", "name": "TCP"}, {"id": "udp", "name": "UDP"}, {"id": "icmp", "name": "ICMP"}, {"id": "arp", "name": "ARP"}], "scenarios": [{"id": 1, "name": "DoS napad", "description": "Prepoznajte DoS paketni napad"}, {"id": 2, "name": "Port skeniranje", "description": "Identifikacija otvorenih portova"}, {"id": 3, "name": "VPN saobraćaj", "description": "Analizirajte VPN promet"}]}', 'hard', 45, 300),
+
 (15, 'simulation', 'VPN Simulacija', 'Simulirajte VPN konekciju', '{"endpoints": ["server1.vpn.com", "server2.vpn.com"], "protocols": ["OpenVPN", "WireGuard"], "encryption": ["AES-256", "ChaCha20"], "features": ["multi-hop", "obfuscation"]}', 'hard', 50, 600);
-(16, 'drag_drop', 'VPN Konfiguracija', 'Postavite sigurnu VPN konfiguraciju', '{"elements": [{"id": "protocol", "name": "Protokol"}, {"id": "encryption", "name": "Enkripcija"}, {"id": "kill_switch", "name": "Kill Switch"}], "scenarios": [{"id": 1, "name": "Remote Work", "required_protocols": ["OpenVPN", "WireGuard"], "firewall_rules": true}, {"id": 2, "name": "Public WiFi", "required_protocols": ["OpenVPN"], "kill_switch": true}]}', 'hard', 40, 300);

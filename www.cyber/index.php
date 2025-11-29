@@ -12,10 +12,18 @@ require_once __DIR__ . '/funkcije/veza_do_baze.php';
 
 $user_id = $_SESSION['user_id'];
 
-// Get user stats
+// Get user stats - with error handling
 $stmt = $veza->prepare("SELECT total_xp, level FROM cyber_users WHERE id = ?");
 $stmt->execute([$user_id]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// Check if user exists
+if (!$user) {
+    // User doesn't exist in database, log them out
+    session_destroy();
+    header('Location: login.php');
+    exit;
+}
 
 // Get categories with progress
 $stmt = $veza->prepare("
@@ -68,7 +76,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <section class="mode-selector">
             <div class="mode-card" onclick="location.href='quiz.php'">
-                <div class="mode-icon">📝</div>
+                <div class="mode-icon">🔍</div>
                 <h3 class="mode-title">QUIZ MODE</h3>
                 <p class="mode-desc">Test your knowledge with flashcards</p>
                 <div class="mode-stats">
