@@ -1,0 +1,36 @@
+Error
+Static analysis:
+
+24 errors were found during analysis.
+
+Unexpected beginning of statement. (near "13" at position 1)
+Unexpected beginning of statement. (near "'drag_drop'" at position 5)
+Unexpected beginning of statement. (near "'VPN Konfiguracija'" at position 18)
+Unexpected beginning of statement. (near "'Postavite sigurnu VPN konfiguraciju'" at position 39)
+Unexpected beginning of statement. (near "'{"elements": [{"id": "protocol", "name": "Protokol"}, {"id": "encryption", "name": "Enkripcija"}, {"id": "kill_switch", "name": "Kill Switch"}], "scenarios": [{"id": 1, "name": "Remote Work", "required_protocols": ["OpenVPN", "WireGuard"], "firewall_rules": true}, {"id": 2, "name": "Public WiFi", "required_protocols": ["OpenVPN"], "kill_switch": true}]}'" at position 78)
+Unexpected beginning of statement. (near "'hard'" at position 437)
+Unexpected beginning of statement. (near "40" at position 445)
+Unexpected beginning of statement. (near "300" at position 449)
+Unexpected beginning of statement. (near "14" at position 457)
+Unexpected beginning of statement. (near "'drag_drop'" at position 461)
+Unexpected beginning of statement. (near "'Mrežni Paketi'" at position 474)
+Unexpected beginning of statement. (near "'Analizirajte mrežne pakete'" at position 491)
+Unexpected beginning of statement. (near "'{"elements": [{"id": "tcp", "name": "TCP"}, {"id": "udp", "name": "UDP"}, {"id": "icmp", "name": "ICMP"}, {"id": "arp", "name": "ARP"}], "scenarios": [{"id": 1, "name": "DoS napad", "description": "Prepoznajte DoS paketni napad"}, {"id": 2, "name": "Port skeniranje", "description": "Identifikacija otvorenih portova"}, {"id": 3, "name": "VPN saobraćaj", "description": "Analizirajte VPN promet"}]}'" at position 521)
+Unexpected beginning of statement. (near "'hard'" at position 923)
+Unexpected beginning of statement. (near "45" at position 931)
+Unexpected beginning of statement. (near "300" at position 935)
+Unexpected beginning of statement. (near "15" at position 943)
+Unexpected beginning of statement. (near "'simulation'" at position 947)
+Unexpected beginning of statement. (near "'VPN Simulacija'" at position 961)
+Unexpected beginning of statement. (near "'Simulirajte VPN konekciju'" at position 979)
+Unexpected beginning of statement. (near "'{"endpoints": ["server1.vpn.com", "server2.vpn.com"], "protocols": ["OpenVPN", "WireGuard"], "encryption": ["AES-256", "ChaCha20"], "features": ["multi-hop", "obfuscation"]}'" at position 1008)
+Unexpected beginning of statement. (near "'hard'" at position 1185)
+Unexpected beginning of statement. (near "50" at position 1193)
+Unexpected beginning of statement. (near "600" at position 1197)
+SQL query: Copy
+
+(13, 'drag_drop', 'VPN Konfiguracija', 'Postavite sigurnu VPN konfiguraciju', '{"elements": [{"id": "protocol", "name": "Protokol"}, {"id": "encryption", "name": "Enkripcija"}, {"id": "kill_switch", "name": "Kill Switch"}], "scenarios": [{"id": 1, "name": "Remote Work", "required_protocols": ["OpenVPN", "WireGuard"], "firewall_rules": true}, {"id": 2, "name": "Public WiFi", "required_protocols": ["OpenVPN"], "kill_switch": true}]}', 'hard', 40, 300), (14, 'drag_drop', 'Mrežni Paketi', 'Analizirajte mrežne pakete', '{"elements": [{"id": "tcp", "name": "TCP"}, {"id": "udp", "name": "UDP"}, {"id": "icmp", "name": "ICMP"}, {"id": "arp", "name": "ARP"}], "scenarios": [{"id": 1, "name": "DoS napad", "description": "Prepoznajte DoS paketni napad"}, {"id": 2, "name": "Port skeniranje", "description": "Identifikacija otvorenih portova"}, {"id": 3, "name": "VPN saobraćaj", "description": "Analizirajte VPN promet"}]}', 'hard', 45, 300), (15, 'simulation', 'VPN Simulacija', 'Simulirajte VPN konekciju', '{"endpoints": ["server1.vpn.com", "server2.vpn.com"], "protocols": ["OpenVPN", "WireGuard"], "encryption": ["AES-256", "ChaCha20"], "features": ["multi-hop", "obfuscation"]}', 'hard', 50, 600);
+
+MySQL said: Documentation
+
+#1064 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '13, 'drag_drop', 'VPN Konfiguracija', 'Postavite sigurnu VPN konfiguraciju', '{"' at line 1
